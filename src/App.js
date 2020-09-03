@@ -2,12 +2,20 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+function CounterHeader (props) {
+
+  const { cnt, name } = props;
+
+  return (<h4>This is counter value: { cnt }, n = { name }</h4>)
+}
+
 export class AppClass extends React.Component {// классовый React-компонент
 
   // стейт - это переменные, которые учавствуют во внутренней логике, влияющей на перерисовку компонента
   state = { // первый вариант объявить стейт компонента
     counter: 0,
-  }
+  };
 
   // constructor(props) {
   //   super(props);
@@ -34,7 +42,9 @@ export class AppClass extends React.Component {// классовый React-ко�
         <header className="App-header">
           <img src={ logo } className="App-logo" alt="logo" />
           <h1>Class-based component</h1>
-          <h4>This is counter value: { this.state.counter }</h4>
+
+          <CounterHeader cnt={ this.state.counter } name="Some React name"   />
+
           <input type="button" onClick={ this.handleButtonClick } value="Increment" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
